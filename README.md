@@ -31,6 +31,15 @@ dotnet build | Para compilar o projeto
 
 dotnet run | Para executar o projeto
 
+
+
+#### Recomendo apagar a pasta migrations e usar os seguintes comandos:
+
+dotnet ef migrations add NomeDaMigration (exemplo: AddBanco) | Para criar as migrations novamente 
+
+dotnet ef update database | Para atualizar o banco 
+
+
 ## Documentação (Em construção...)
 
 Logo após executar o projeto, acesse: [IP]/swagger para ver a documentação gerada pelo swagger.
