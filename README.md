@@ -37,6 +37,7 @@ dotnet run | Para executar o projeto
 
 dotnet ef migrations add NomeDaMigration (exemplo: AddBanco) | Para criar as migrations novamente 
 
+
 dotnet ef update database | Para atualizar o banco 
 
 
