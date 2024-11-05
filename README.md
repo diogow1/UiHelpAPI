@@ -41,7 +41,7 @@ dotnet ef migrations add NomeDaMigration  # 'NomeDaMigration' descreve a alteraÃ
 
 
 ```bash
-dotnet ef database update # Cria o Banco de Dados
+dotnet ef database update # Cria/Atualiza o Banco de Dados
 ```
 
 ## ConnectionString ðŸ”Œ
