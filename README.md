@@ -36,7 +36,7 @@ dotnet build
 > Execute esses comandos caso não há uma pasta com as migrations no projeto
 
 ```bash
-dotnet ef migrations add NomeDaMigration
+dotnet ef migrations add NomeDaMigration  # 'NomeDaMigration' descreve a alteração
 ```
 
 ```bash
