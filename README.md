@@ -33,14 +33,15 @@ dotnet build
 
 #### Configurando o Banco de Dados (Na raiz do projeto)
 
-> Execute esses comandos caso não há uma pasta com as migrations no projeto
-
+> Execute o "migrations add" caso não há uma pasta com as migrations no projeto
 ```bash
 dotnet ef migrations add NomeDaMigration  # 'NomeDaMigration' descreve a alteração
 ```
 
+
+
 ```bash
-dotnet ef database update
+dotnet ef database update # Cria o Banco de Dados
 ```
 
 ## ConnectionString 🔌
@@ -52,9 +53,10 @@ dotnet ef database update
   }
 ```
 
-> Configure o Builder do DbContext caso queria usar outro DATABASE
+
 
 #### `UiHelpAPI/Program.cs`
+> Configure o Builder do DbContext caso queria usar outro DATABASE
 ```csharp
 builder.Services.AddDbContext<DatabaseContexto>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySql"), 
