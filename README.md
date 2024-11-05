@@ -2,6 +2,9 @@
 
 ## Docker (Em Construção...)
 
+## Documentação (Em construção...)
+
+Logo após executar o projeto, acesse: [IP]/swagger para ver a documentação gerada pelo swagger.
 
 ##  Instalação ⚙
 
@@ -9,38 +12,57 @@
 
 [MySql Server](https://dev.mysql.com/downloads/installer/)
 
+## Configuração para Desenvolvimento 💻
+
+
+#### Baixando Pacotes
+
+```bash
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.0
+```
+
+#### Baixando Dependências (Na raiz do projeto)
+
+```bash
+dotnet restore
+```
+
+```bash
+dotnet build
+```
+
+#### Configurando o Banco de Dados (Na raiz do projeto)
+
+> Execute esses comandos caso não há uma pasta com as migrations no projeto
+
+```bash
+dotnet ef migrations add NomeDaMigration
+```
+
+```bash
+dotnet ef database update
+```
+
 ## ConnectionString 🔌
 
-![image](https://github.com/user-attachments/assets/39540072-92a8-4789-8d1d-a8ea34fada12)
+#### `UiHelpAPI/appsettings.json`
+```json
+  "ConnectionStrings": {
+    "MySql": "Server=localhost;Database=UiHelper;Uid=;Pwd="
+  }
+```
 
-#### Caso queria usar outro database, lembre-se de modificar o builder.services em program.cs
+> Configure o Builder do DbContext caso queria usar outro DATABASE
 
-![image](https://github.com/user-attachments/assets/cc9b97c9-4b50-4015-95f6-b96494f139bd)
-
-## Comandos 💻
-
-![image](https://github.com/user-attachments/assets/c48c3528-7ea7-4933-930d-480f873282ef) 
-
-dotnet restore |  Para baixar as dependências 
-
-![image](https://github.com/user-attachments/assets/c41e821d-d8a5-4aea-9ff1-6f4248e1e9ab)
-
-dotnet build | Para compilar o projeto
-
-![image](https://github.com/user-attachments/assets/fcf152de-6d15-4093-8ffa-6afbc38bc58a)
-
-dotnet run | Para executar o projeto
+#### `UiHelpAPI/Program.cs`
+```csharp
+builder.Services.AddDbContext<DatabaseContexto>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("MySql"), 
+        MySqlServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySql")))); 
+var app = builder.Build();
+```
 
 
 
-#### Recomendo apagar a pasta migrations e usar os seguintes comandos:
-
-dotnet ef migrations add NomeDaMigration (exemplo: AddBanco) | Para criar as migrations novamente 
 
 
-dotnet ef update database | Para atualizar o banco 
-
-
-## Documentação (Em construção...)
-
-Logo após executar o projeto, acesse: [IP]/swagger para ver a documentação gerada pelo swagger.
